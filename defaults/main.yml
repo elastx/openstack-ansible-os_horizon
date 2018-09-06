@@ -205,6 +205,9 @@ horizon_enable_trove_ui: False
 ## Designate UI Panel
 horizon_enable_designate_ui: False
 
+## Cloudkitty UI Panel
+horizon_enable_cloudkitty_ui: False
+
 ## Neutron features to enable
 horizon_enable_neutron_lbaas: False
 horizon_enable_neutron_fwaas: False
@@ -295,6 +298,8 @@ horizon_pip_packages:
   - sahara_dashboard
   - trove_dashboard
   - designate_dashboard
+  - cloudkitty-dashboard
+  - python-cloudkittyclient
 
 # This variable is used to install additional pip packages
 # that could be needed for additional dashboards

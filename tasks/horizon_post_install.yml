@@ -107,6 +107,28 @@
     - src: "{{ horizon_lib_dir }}/trove_dashboard/enabled/_1760_project_database_configurations_panel.py"
       path: "{{ horizon_lib_dir }}/openstack_dashboard/enabled/_1760_project_database_configurations_panel.py"
 
+- name: Enable the cloudkitty-dashboard Horizon panel
+  file:
+    src: "{{ item.src }}"
+    path: "{{ item.path }}"
+    state: "{{ horizon_enable_cloudkitty_ui | ternary('link', 'absent') }}"
+  notify: Restart apache2
+  with_items:
+    - src: "{{ horizon_lib_dir }}/cloudkittydashboard/enabled/_10_admin_group.py"
+      path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_10_admin_group.py"
+    - src: "{{ horizon_lib_dir }}/cloudkittydashboard/enabled/_10_project_group.py"
+      path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_10_project_group.py"
+    - src: "{{ horizon_lib_dir }}/cloudkittydashboard/enabled/_11_admin_hashmap_panel.py"
+      path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_11_admin_hashmap_panel.py"
+    - src: "{{ horizon_lib_dir }}/cloudkittydashboard/enabled/_11_admin_rating_panel.py"
+      path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_11_admin_rating_panel.py"
+    - src: "{{ horizon_lib_dir }}/cloudkittydashboard/enabled/_11_project_rating_panel.py"
+      path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_11_project_rating_panel.py"
+    - src: "{{ horizon_lib_dir }}/cloudkittydashboard/enabled/_12_project_reporting_panel.py"
+      path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_12_project_reporting_panel.py"
+    - src: "{{ horizon_lib_dir }}/cloudkittydashboard/enabled/_13_admin_pyscripts_panel.py"
+      path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_13_admin_pyscripts_panel.py"
+
 - name: Enable the neutron-lbaas-dashboard Horizon panel
   file:
     src: "{{ horizon_lib_dir }}/neutron_lbaas_dashboard/enabled/_1481_project_ng_loadbalancersv2_panel.py"
