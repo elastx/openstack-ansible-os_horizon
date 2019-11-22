@@ -122,3 +122,19 @@
   register: async_compress_static_files
   async: 600
   poll: 0
+
+# NOTE(holmsten): There is most likely a better way to do these steps.. Needed for adjutant-ui
+- name: Load keystone_policy values
+  slurp:
+    src: "{{ horizon_lib_dir }}/openstack_dashboard/conf/keystone_policy.json"
+  register: horizon_keystone_policy
+
+- name: Append key/values to keystone_policy
+  set_fact:
+    horizon_keystone_policy: "{{ horizon_keystone_policy|b64decode|from_json | combine(horizon_custom_keystone_policy) }}"
+
+- name: Write new keystone_policy file
+  copy:
+    content: "{{ horizon_keystone_policy | to_nice_json }}"
+    dest: "{{ horizon_lib_dir }}/openstack_dashboard/conf/keystone_policy.json"
+  notify: Restart apache2

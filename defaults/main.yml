@@ -52,6 +52,10 @@ heat_dashboard_git_install_branch: "stable/queens"
 cloudkitty_dashboard_git_repo: https://git.openstack.org/openstack/cloudkitty-dashboard
 cloudkitty_dashboard_git_install_branch: "stable/queens"
 
+## The git source/branch for the Adjutant UI plugin
+adjutant_dashboard_git_repo: https://git.openstack.org/openstack/adjutant-ui
+adjutant_dashboard_git_install_branch: "stable/queens"
+
 ## The packages to build from source (used in developer mode)
 horizon_developer_constraints:
   - "git+{{ horizon_git_repo }}@{{ horizon_git_install_branch }}#egg=horizon"
@@ -60,6 +64,7 @@ horizon_developer_constraints:
   - "git+{{ trove_dashboard_git_repo }}@{{ trove_dashboard_git_install_branch }}#egg=trove_dashboard"
   - "git+{{ heat_dashboard_git_repo }}@{{ heat_dashboard_git_install_branch }}#egg=heat_dashboard"
   - "git+{{ cloudkitty_dashboard_git_repo }}@{{ cloudkitty_dashboard_git_install_branch }}#egg=cloudkitty_dashboard"
+  - "git+{{ adjutant_dashboard_git_repo }}@{{ adjutant_dashboard_git_install_branch }}#egg=adjutant_ui"
 
 # Name of the virtual env to deploy into
 horizon_venv_tag: untagged
@@ -242,6 +247,9 @@ horizon_enable_heat_ui: False
 ## Cloudkitty UI Panel
 horizon_enable_cloudkitty_ui: False
 
+## Adjutant UI Panel
+horizon_enable_adjutant_ui: False
+
 ## Neutron features to enable
 horizon_enable_neutron_lbaas: False
 horizon_enable_neutron_fwaas: False
@@ -303,6 +311,8 @@ horizon_custom_themes: {}
 # value is the theme_name from the vars above
 horizon_default_theme: "default"
 
+horizon_custom_keystone_policy: ""
+
 horizon_webroot: /
 
 horizon_listen_ports:
@@ -338,6 +348,7 @@ horizon_pip_packages:
   - octavia_dashboard
   - cloudkitty-dashboard
   - python-cloudkittyclient
+  - python-adjutantclient
 
 # This variable is used to install additional pip packages
 # that could be needed for additional dashboards
