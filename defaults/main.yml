@@ -349,6 +349,7 @@ horizon_pip_packages:
   - cloudkitty-dashboard
   - python-cloudkittyclient
   - python-adjutantclient
+  - adjutant-ui
 
 # This variable is used to install additional pip packages
 # that could be needed for additional dashboards

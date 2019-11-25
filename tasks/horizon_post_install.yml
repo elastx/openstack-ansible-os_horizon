@@ -131,7 +131,7 @@
 
 - name: Append key/values to keystone_policy
   set_fact:
-    horizon_keystone_policy: "{{ horizon_keystone_policy|b64decode|from_json | combine(horizon_custom_keystone_policy) }}"
+    horizon_keystone_policy: "{{ horizon_keystone_policy['content']|b64decode|from_json | combine(horizon_custom_keystone_policy) }}"
 
 - name: Write new keystone_policy file
   copy:
