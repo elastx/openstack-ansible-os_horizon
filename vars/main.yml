@@ -148,7 +148,7 @@ _horizon_panels:
     state: "{{ (horizon_enable_adjutant_ui | bool) | ternary('link', 'absent') }}"
   - src: "{{ horizon_lib_dir }}/adjutant_ui/enabled/_6025_signup.py"
     path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_6025_signup.py"
-    state: "{{ (horizon_enable_adjutant_ui | bool) | ternary('link', 'absent') }}"
+    state: "{{ (horizon_enable_adjutant_ui | bool and horizon_enable_adjutant_signup | bool) | ternary('link', 'absent') }}"
   - src: "{{ horizon_lib_dir }}/adjutant_ui/enabled/_6070_settings_update_email.py"
     path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_6070_settings_update_email.py"
     state: "{{ (horizon_enable_adjutant_ui | bool) | ternary('link', 'absent') }}"
