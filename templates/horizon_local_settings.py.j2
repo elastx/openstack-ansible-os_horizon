@@ -807,3 +807,7 @@ OPENSTACK_KEYSTONE_ADMIN_ROLES = [
   '{{ item }}',
 {% endfor %}
 ]
+
+{% if horizon_enable_adjutant_ui | bool %}
+OPENSTACK_REGISTRATION_URL = "{{ adjutant_service_internalurl }}"
+{% endif %}
