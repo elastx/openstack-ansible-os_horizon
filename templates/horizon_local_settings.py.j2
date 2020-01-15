@@ -799,6 +799,16 @@ AVAILABLE_THEMES = [
 
 DEFAULT_THEME = '{{ horizon_default_theme }}'
 
+{% if horizon_enable_adjutant_ui | bool %}
+OPENSTACK_REGISTRATION_URL = "{{ adjutant_service_internalurl }}"
+ROLE_TRANSLATIONS = {
+{% for key, value in (horizon_role_translations | dictsort) %}
+    '{{ key }}': _('{{ value }}'){% if not loop.last %},{% endif %}
+
+{% endfor %}
+}
+{% endif %}
+
 # Set arbitrary horizon configuration options
 HORIZON_CONFIG.update({{ horizon_config_overrides }})
 
@@ -807,7 +817,3 @@ OPENSTACK_KEYSTONE_ADMIN_ROLES = [
   '{{ item }}',
 {% endfor %}
 ]
-
-{% if horizon_enable_adjutant_ui | bool %}
-OPENSTACK_REGISTRATION_URL = "{{ adjutant_service_internalurl }}"
-{% endif %}

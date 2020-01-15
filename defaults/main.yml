@@ -379,3 +379,18 @@ horizon_keystone_admin_roles:
 horizon_websso_initial_choice: "credentials"
 
 horizon_panels: "{{ _horizon_panels }}"
+
+# This variable is used to translate role names.
+# Only used with adjutant-ui
+horizon_role_translations:
+  _member_: Project Member
+  compute_start_stop: Compute Start/Stop
+  creator: Secret Store
+  heat_stack_owner: Heat Stack Owner
+  load-balancer_admin: Load Balancer
+  Member: Project Member
+  object_storage: Object Storage
+  project_admin: Project Administrator
+  project_mod: Project Moderator
+  project_readonly: Project Read-only
+  swiftoperator: Object Storage
