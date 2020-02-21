@@ -801,6 +801,7 @@ DEFAULT_THEME = '{{ horizon_default_theme }}'
 
 {% if horizon_enable_adjutant_ui | bool %}
 OPENSTACK_REGISTRATION_URL = "{{ adjutant_service_internalurl }}"
+USERNAME_IS_EMAIL = True
 ROLE_TRANSLATIONS = {
 {% for key, value in (horizon_role_translations | dictsort) %}
     '{{ key }}': _('{{ value }}'){% if not loop.last %},{% endif %}
