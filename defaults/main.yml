@@ -386,11 +386,11 @@ horizon_role_translations:
   _member_: Project Member
   compute_start_stop: Compute Start/Stop
   creator: Secret Store
-  heat_stack_owner: Heat Stack Owner
-  load-balancer_admin: Load Balancer
+  heat_stack_owner: Orchestration
+  load-balancer_member: Load Balancer
   Member: Project Member
   object_storage: Object Storage
   project_admin: Project Administrator
   project_mod: Project Moderator
   project_readonly: Project Read-only
-  swiftoperator: Object Storage
+  swiftoperator: Object Store
