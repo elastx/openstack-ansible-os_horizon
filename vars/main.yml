@@ -154,7 +154,7 @@ _horizon_panels:
     state: "{{ (horizon_enable_adjutant_ui | bool) | ternary('link', 'absent') }}"
   - src: "{{ horizon_lib_dir }}/adjutant_ui/enabled/_6080_management_quota.py"
     path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_6080_management_quota.py"
-    state: "{{ (horizon_enable_adjutant_ui | bool) | ternary('link', 'absent') }}"
+    state: "{{ (horizon_enable_adjutant_ui | bool and horizon_enable_adjutant_quota | bool) | ternary('link', 'absent') }}"
   - src: "{{ horizon_lib_dir }}/adjutant_ui/enabled/_6090_management_task_list.py"
     path: "{{ horizon_lib_dir }}/openstack_dashboard/local/enabled/_6090_management_task_list.py"
     state: "{{ (horizon_enable_adjutant_ui | bool) | ternary('link', 'absent') }}"
